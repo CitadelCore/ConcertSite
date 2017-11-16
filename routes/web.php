@@ -18,3 +18,11 @@ Route::get('/', function (){
 Route::get('/dev', function() {
   return view('pagebase', array("title" => "Hello World!"));
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::post('/store/buy', function (Request $request) {
+    // buy item
+});
