@@ -13,6 +13,16 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::post(
+    'stripe/webhook',
+    '\Laravel\Cashier\Http\Controllers\WebhookController@handleWebhook'
+);
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::middleware('auth:api')->post('/tickets/buy', function (Request $request) {
+    $controller = new \Http\Controllers\Logic\TicketController;
+    $controller->newTicket(Auth::id());
 });

@@ -41,5 +41,6 @@ Schema::create('subscriptions', function ($table) {
     public function down()
     {
         //
+        Schema::dropIfExists('subscriptions');
     }
 }
